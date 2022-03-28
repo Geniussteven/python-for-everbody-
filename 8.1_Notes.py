@@ -2,15 +2,16 @@
 #算法就像是代码的GPS导航 而数据结构是结构化的变量 。
 strings are immmutable, Lists are mutable.'''
 len()、range()、append()
-#counting
+#counting loop
 a = ['1', '2', '3']
-for i in range(len(a)) ：
-    a = a[1]
+for i in range(len(a))
+    friend = a[i]
     print()
 
+
 #building a list
-stuff = list()
-stuff.append('apple')
+stuff = list()#list()是预设定义类型，这一步类似于建立一个空list然后assign给stuff
+stuff.append('apple')#如果x = x.append会返回值破坏x
 print(stuff)
 #Is something in a list.
 some  = ('a', 'b', 'c')
@@ -18,6 +19,17 @@ some  = ('a', 'b', 'c')
 #True(会返回这个值)
 
 #sort（）按字母顺序排列
+#1st way.
+num = 0
+count = 0
+    while True :
+        inp = input('')
+        if inp =='done' : break
+        value = float(inp)
+        num = value + num
+        count = count + 1
+average = num / count
+#2rd way. Using a data structure rather than just a logic
 numlist = list()
     while True :
         inp = input('')
