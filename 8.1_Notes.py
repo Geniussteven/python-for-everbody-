@@ -37,3 +37,4 @@ print()
 而这段代码计算多少数字 就需要多少额外的内存空间'''
 选校工具
 https://offer.1point3acres.com/db/programs/CS-MS-
+https://docs.python.org/3/library/stdtypes.html#range
