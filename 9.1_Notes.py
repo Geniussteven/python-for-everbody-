@@ -108,12 +108,12 @@ handle = open(name)
 counts = {}
 for line in handle:
     word = line.split()
-    if len(word) < 3 or word[0] != "From" : continue
+    if len(word) < 3 or word[0] != "From" : continue #效果和  if not line.startswith("From:"): continue等同。
     email = word[1]
     if email in counts :
         counts[email] = 1 + counts[email]
     else :
-        counts.update({email:1})
+        counts.update({email:1}) #Python 字典(Dictionary) update() 函数把字典 dict2 的键/值对更新到 dict 里。
 max = 0
 value = ""
 for i in counts:
@@ -163,6 +163,6 @@ for name in mail_names:
     counts[name] = counts.get(name, 0) + 1
 
 max_name_as_list = [key for key, value in counts.items() if value == max(counts.values())]
-max_name = qew.join(max_name_as_list)
+max_name = qew.join(max_name_as_list)#Python join() 方法用于将序列中的元素以指定的字符连接生成一个新的字符串。
 
 print(max_name ,max(counts.values()))
