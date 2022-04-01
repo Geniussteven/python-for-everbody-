@@ -29,6 +29,10 @@ x = counts.get(name, 0)
 #counting with get()
 '''目标是遍历list找到dict里已有的计数加1，新的添加新的key，value设为1'''
 第一种方法是用if-else
+if name in names :
+    count[name] = 1
+else :
+    count[name] = count[name] + 1
 第二种用get()
 counts[name] = counts.get(name, 0) + 1
 
