@@ -17,7 +17,7 @@ purse['a'] = 1#用 index operator append value。
 #可以修改value
 purse['a'] = purse['a'] + 1
 print(purse)
-{'a': 1}
+{'a': 2}
 #你也可以直接建立一个dict,不过打印后顺序会混乱。
 '''可以用 in 询问某个key是否在dict中，会回答T/F.
 如果试图去抓取不存在的key，就会Traceback Error'''
