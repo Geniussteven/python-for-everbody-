@@ -164,5 +164,9 @@ for name in mail_names:
 
 max_name_as_list = [key for key, value in counts.items() if value == max(counts.values())]
 max_name = qew.join(max_name_as_list)#Python join() 方法用于将序列中的元素以指定的字符连接生成一个新的字符串。
+'''str = "-";
+seq = ("a", "b", "c"); # 字符串序列
+print str.join( seq );
+consequence a-b-c'''
 
 print(max_name ,max(counts.values()))
