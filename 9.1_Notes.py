@@ -174,3 +174,7 @@ print str.join( seq );
 consequence a-b-c'''
 
 print(max_name ,max(counts.values()))
+'''data mining 数据挖掘
+Databases
+Webpages with Django
+PHP
