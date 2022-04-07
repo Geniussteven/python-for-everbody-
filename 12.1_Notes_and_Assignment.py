@@ -5,8 +5,10 @@ transport to transport 端对端
 socket套接字（两台电脑间接受传输的接口）
 listen ports侦听端口
 TCPIP接口
+Client客户端
 80是web网页（HTTP）常用接口；443端口
-
+what is an important aspect of an Application Layer protocol like HTTP?
+Which Application talks first? The client or server?
 想要实现互联基础代码如下
 import socket#引入库
 mysock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -44,6 +46,7 @@ https://unity.com/
 https://threejs.org/
 https://www.kaggle.com/
   P69 b站视频 https://www.bilibili.com/video/BV16b411n7U4?p=49
+  URL(Uniform Resource Locator) 
   Using URL lib in python
   将我们之前request get等操作存在lib里
   send into a library
@@ -62,3 +65,7 @@ https://www.kaggle.com/
 我们做了一个获取请求， 这是我们连接到的 IP 地址，有一个 200， 响应标头，我们看到它是内容类型的文本 HTML。 
 请求标头再次， 这些是我们发送的。 
 有一个路径和方案以及所有其他东西， 然后有查询字符串参数。
+cache-control 缓存控制
+302表示我给你的是一个location header
+header中的metadata告诉浏览器如何在响应文档返回时解释它的正文
+text/plain文本平面 text/html
