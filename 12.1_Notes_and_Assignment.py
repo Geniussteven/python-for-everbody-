@@ -43,7 +43,7 @@ https://www.opengl.org/
 https://unity.com/
 https://threejs.org/
 https://www.kaggle.com/
-  
+  P69 b站视频 https://www.bilibili.com/video/BV16b411n7U4?p=49
   Using URL lib in python
   将我们之前request get等操作存在lib里
   send into a library
