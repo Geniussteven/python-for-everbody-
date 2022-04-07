@@ -33,6 +33,8 @@ Metadata元数据 然后text
 
 
 encode and decode
+encode将Unicode string转化为bytes utf-8 第31行的cmd实际上就是bytes（编码后）
+发送给sockets然后，它接收，并decode
 一些有意思的python网址
 https://dash.gallery/Portal/
 https://plotly.com/python/
@@ -41,3 +43,9 @@ https://www.opengl.org/
 https://unity.com/
 https://threejs.org/
 https://www.kaggle.com/
+  
+  Using URL lib in python
+  将我们之前request get等操作存在lib里
+  send into a library
+  整体操作 import library
+  通过几个函数（request,open）返回一个object例如视频里的fhand
