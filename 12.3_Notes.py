@@ -25,7 +25,7 @@ type x ->class 'bytes'
 Question 4
 In this Python code, which line is most like the open() call to read a file:
 
-
+CS自学指南https://csdiy.wiki/
 import socket
 
 mysock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
