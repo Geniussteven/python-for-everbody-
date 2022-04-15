@@ -38,3 +38,10 @@ while True:
     if (len(data) < 1):
 Answer:
 mysock.connect()
+#urllib
+improt 一些库urllib
+fhand = urllib.request.urlopen('http域名')#类似于open域名文件
+for line in fhand:
+print(line.decode().strip())#line 其实是byte array,需要解码成string
+
+之前的
