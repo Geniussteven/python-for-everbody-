@@ -45,3 +45,8 @@ for line in fhand:
 print(line.decode().strip())#line 其实是byte array,需要解码成string
 
 之前的
+for line in name :
+    line.decode().split()
+    for emails in line[5] :
+        counts[emails] = counts.get(eamils, 0) + 1
+lst = list()
