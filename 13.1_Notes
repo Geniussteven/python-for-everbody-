@@ -1,0 +1,21 @@
+'''13.1 data om the web
+API-application program interfaces
+我们在网络上以某种形式传输数据，线路格式：XML、JSON
+例如从python的dictionary里serialize(序列化)出一种交换格式，然后De-Serialize反序列化到Java Hashmap
+'''
+eXtensible Markup Language (XML)
+在start and end 之间的是text content ，start nodes之后的是atribute,是一种key-value pairs./>是self-closing tag
+关于XML与HTML的关键之处在于，我们可以编造标签。在HTML中，我们说像h1或a这样的锚标签，或h1代表头一级。在这里，基于我们要在两个交换数据的应用程序之间达成一致，你可以说标签是person和/person。
+
+自我封闭的标签。就是说，你只要在开放标签的末尾包括这个/>。这就像你有一个同名的关闭标签，并有一个空的文本区域.
+
+'''XML schema架构为了确认导致blow up的责任方，需要签订contract
+Validation is the act of verifying that the data is in the right format. It's a contract. 
+So if you're working with something like your airline reservation system that's working with an airline system
+XML validation is the act of taking an document and a Schema Contract, which itself is also an XML document, and then sending to the Validator. 
+'''
+'''the XML Schema from the World Wide Web Consortium. It's called XSD and usually in the file that you get
+maxOccurs 最多发生几次
+'''
+'''XSD Data types,普遍使用utc时间或者是格林威治时间
+'''
