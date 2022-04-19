@@ -19,3 +19,11 @@ maxOccurs 最多发生几次
 '''
 '''XSD Data types,普遍使用utc时间或者是格林威治时间
 '''
+#从XML里提取信息的方法
+第一种针对无嵌套结构XML
+import lib
+然后输入xml
+tree = ET.fromstring(data) 主要是转化为list of tree ,然后再从树里获取信息。
+print（'name:', tree.find('name').text'）
+print（'attr', tree.find('name').get(hide)'）
+第一种针对嵌套结构XML
