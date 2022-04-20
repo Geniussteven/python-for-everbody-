@@ -70,4 +70,54 @@ Retrieved 4189 characters
 Count: 50
 Sum: 2...
 
-Answer:
+Answer one:
+import urllib.request, urllib.parse, urllib.error
+import xml.etree.ElementTree as ET
+
+url = input ('Enter url: ')
+print('Retrieving', url)
+
+total = 0
+count = 0
+
+uh = urllib.request.urlopen(url)
+data = uh.read()
+print('Retrieved', len(data), 'characters')
+
+tree = ET.fromstring(data)
+lst = tree.findall ('comments/comment')
+
+for item in lst:
+    count = count + 1
+    t = item.find ('count').text
+    total = total + float (t)
+    
+print ('Count:', count)
+print ('Sum:' , total)
+
+Answer two：
+from urllib.request import urlopen
+import xml.etree.ElementTree as ET
+import ssl
+
+
+url=input('Enter location:')
+print('Retrieving...',url)
+accumulative=0
+XML=urlopen(url).read() #readu url
+print('Retreived:',str(len(XML)),'characters')
+tree= ET.fromstring(XML)
+print(tree)
+counts=tree.findall('.//count')#
+print('Count', str(len(counts)))
+list=list()
+x=None
+for i in counts:
+    #option 1 accumulation
+    accumulative=accumulative+int(i.text)
+    x=int(i.text)
+    #option 2 list sum
+    list.append(x)
+
+print(accumulative)
+print(sum(list))
