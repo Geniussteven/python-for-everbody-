@@ -109,7 +109,7 @@ print('Retreived:',str(len(XML)),'characters')
 tree= ET.fromstring(XML)
 print(tree)
 counts=tree.findall('.//count')#look through the entire tree of XML for any tag named 'count' with the following line of code
-print('Count', str(len(counts)))#将这个list的数据字符串化
+print('Count', str(len(counts)))#将这个list的数据长度字符串化
 list=list()
 x=None
 for i in counts:
