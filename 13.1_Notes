@@ -95,6 +95,7 @@ for item in lst:
 print ('Count:', count)
 print ('Sum:' , total)
 
+sample https://stackoverflow.com/questions/45898669/extracting-data-from-xml-with-python-3
 Answer two：
 from urllib.request import urlopen
 import xml.etree.ElementTree as ET
