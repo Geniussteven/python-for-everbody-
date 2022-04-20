@@ -31,7 +31,7 @@ print（'name:', tree.find('name').text'）
 print（'attr', tree.find('name').get(hide)'）
 第二种针对嵌套结构XML
 stuff = ET.fromstring(data)
-ist = stuff.findall('users/user')
+1st = stuff.findall('users/user')
 '''调用 findall 方法。我们将搜索用户下面的所有用户标签。在用户下有很多这些用户标签。把它们都找出来，然后把它们都给我。
 所以你基本上得到的是这些标签以一个tree的列表展现。'''
 print（'user count:', len(1st)）#看这个list有多长
