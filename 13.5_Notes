@@ -104,3 +104,4 @@ https://maps.googleapis.com/maps/api/geocode/json是一个URL
 但现在，他们已经使它的一部分在API密钥后面，你开始使用OAuth和其他东西，但他们没有把它全部放在我们一直在使用的这个地址服务后面.'''
 
 #Securing API Requests
+google 限制rquest per day；Twitter API, you get zero requests unless you are authorized
