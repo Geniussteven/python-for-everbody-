@@ -1,1 +1,44 @@
 #JavaScript Object Notation (JSON)
+#有些真正重要的事情JSON是做不到的，比如循环结构。图形不容易用JSON表示。但它较于XML更直观，在內部结构上导向更明确。
+第一种dic里嵌套list of dic
+import json
+
+data = '''
+{
+  "name" : "Chuck",
+  "phone" : {
+    "type" : "intl",
+    "number" : "+1 734 303 4456"
+   },
+   "email" : {
+     "hide" : "yes"
+   }
+}'''
+
+info = json.loads(data)#返回的是一种objects，以dic的格式
+print('Name:', info["name"])
+print('Hide:', info["email"]["hide"])
+
+第二种list->dic
+import json
+
+data = '''
+[
+  { "id" : "001",
+    "x" : "2",
+    "name" : "Chuck"
+  } ,
+  { "id" : "009",
+    "x" : "7",
+    "name" : "Brent"
+  }
+]'''
+
+info = json.loads(data)#It's not an object, it's a list.
+print('User count:', len(info))
+
+for item in info:
+    print('Name', item['name'])
+    print('Id', item['id'])
+    print('Attribute', item['x'])
+    
