@@ -88,6 +88,8 @@ while True:
         continue
 
     print(json.dumps(js, indent=4))
+    '''JSON dumps which is the opposite of loads which takes this array that dictionary and includes arrays and we're going to pretty print it
+    JSON转储，这与加载相反，它需要这个数组，字典和包括数组，我们要漂亮地打印它以四位缩进'''
 
     lat = js['results'][0]['geometry']['location']['lat']
     lng = js['results'][0]['geometry']['location']['lng']
@@ -95,4 +97,4 @@ while True:
     location = js['results'][0]['formatted_address']
     print(location)
 '''谷歌地图API一起工作。在过去，这个地图API是免费的，每天有2500个请求。
-但现在，他们已经使它的一部分在API密钥后面，你开始使用OAuth和其他东西，但他们没有把它全部放在我们一直在使用的这个地址服务后面.
+但现在，他们已经使它的一部分在API密钥后面，你开始使用OAuth和其他东西，但他们没有把它全部放在我们一直在使用的这个地址服务后面.'''
