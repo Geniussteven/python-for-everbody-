@@ -157,3 +157,65 @@ while True:
             continue
         s = u['status']['text']
         print('  ', s[:50])
+
+
+
+Worked Example: Twitter API (Chapter 13)-twtest.py
+import urllib.request, urllib.parse, urllib.error
+from twurl import augment
+import ssl
+
+# https://apps.twitter.com/
+# Create App and get the four strings, put them in hidden.py
+
+print('* Calling Twitter...')
+url = augment('https://api.twitter.com/1.1/statuses/user_timeline.json',
+              {'screen_name': 'drchuck', 'count': '2'})'''一个增量来自于这一小段叫做twURL的代码。这使用了一点叫做OAuth的代码，它也是内置在Python中的'''
+print(url)
+
+# Ignore SSL certificate errors
+ctx = ssl.create_default_context()
+ctx.check_hostname = False
+ctx.verify_mode = ssl.CERT_NONE
+
+connection = urllib.request.urlopen(url, context=ctx)
+data = connection.read()
+print(data)
+
+print ('======================================')
+headers = dict(connection.getheaders())
+print(headers)
+
+
+Worked Example: Twitter API (Chapter 13)-twurl.py
+import urllib.request, urllib.parse, urllib.error
+import oauth
+import hidden
+
+# https://apps.twitter.com/
+# Create App and get the four strings, put them in hidden.py
+
+def augment(url, parameters):
+    secrets = hidden.oauth()
+    consumer = oauth.OAuthConsumer(secrets['consumer_key'],
+                                   secrets['consumer_secret'])
+    token = oauth.OAuthToken(secrets['token_key'], secrets['token_secret'])
+
+    oauth_request = oauth.OAuthRequest.from_consumer_and_token(consumer,
+                    token=token, http_method='GET', http_url=url,
+                    parameters=parameters)
+    oauth_request.sign_request(oauth.OAuthSignatureMethod_HMAC_SHA1(),
+                               consumer, token)#signature of URL
+    return oauth_request.to_url()
+
+
+def test_me():
+    print('* Calling Twitter...')
+    url = augment('https://api.twitter.com/1.1/statuses/user_timeline.json',
+                  {'screen_name': 'drchuck', 'count': '2'})
+    print(url)
+    connection = urllib.request.urlopen(url)
+    data = connection.read()
+    print(data)
+    headers = dict(connection.getheaders())
+    print(headers)
