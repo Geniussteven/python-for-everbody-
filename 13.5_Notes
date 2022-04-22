@@ -105,3 +105,49 @@ https://maps.googleapis.com/maps/api/geocode/json是一个URL
 
 #Securing API Requests
 google 限制rquest per day；Twitter API, you get zero requests unless you are authorized
+
+13.8-教学example code-针对于Twitter API
+import urllib.request, urllib.parse, urllib.error
+import twurl#用于解决API授权问题
+import json
+import ssl
+
+# https://apps.twitter.com/
+# Create App and get the four strings, put them in hidden.py
+
+TWITTER_URL = 'https://api.twitter.com/1.1/friends/list.json'
+
+# Ignore SSL certificate errors
+ctx = ssl.create_default_context()
+ctx.check_hostname = False
+ctx.verify_mode = ssl.CERT_NONE
+
+while True:
+    print('')
+    acct = input('Enter Twitter Account:')
+    if (len(acct) < 1): break#如果你再次点击回车，我们就会跳过。
+    url = twurl.augment(TWITTER_URL,#这个对Twitter网址的增强，并做所有的网址编码。
+                        {'screen_name': acct, 'count': '5'})
+    print('Retrieving', url)
+    connection = urllib.request.urlopen(url, context=ctx)
+    data = connection.read().decode()
+    '''
+    这不是JSON。它是JSON的字符串表示。
+    简单来说，json字符串指的就是json本身，由于JavaScript是弱类型语言，所以没有办法直接传递对象或是数组，
+    所以提出了json格式的字符串，用于数据传递'''
+
+    js = json.loads(data)
+    print(json.dumps(js, indent=2))#转储得到
+
+    headers = dict(connection.getheaders())'''在我们一直在做的所有这些urllib请求/响应循环中，我们一直在得到头文件。所以，事实证明，这就是你用来获取头信息的那行代码
+    如果你用connecting.read，得到的是headers；connecting.getheaders是连接里面的一个方法，找到隐藏的headers以dic的格式'''
+    print('Remaining', headers['x-rate-limit-remaining'])'''Twitter将向你传达在他们关闭你之前，他们将允许你再做多少个这样的请求，
+    因为这是每天的事情。这个头的名称是X-rate-limit-remaining'''
+
+    for u in js['users']:
+        print(u['screen_name'])
+        if 'status' not in u:
+            print('   * No status found')
+            continue
+        s = u['status']['text']
+        print('  ', s[:50])
