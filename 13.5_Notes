@@ -107,6 +107,21 @@ https://maps.googleapis.com/maps/api/geocode/json是一个URL
 #Securing API Requests
 google 限制rquest per day；Twitter API, you get zero requests unless you are authorized
 
+
+对于完成调用的两个文件作用的解释。（都需要放进hidden.py文件）
+hidden.py如果没有及时更新数据，会返回401 authorization required
+# Keep this file separate
+
+# https://apps.twitter.com/
+# Create new App and get the four strings
+def oauth():
+    return {"consumer_key": "h7Lu...Ng",
+            "consumer_secret": "dNKenAC3New...mmn7Q",
+            "token_key": "10185562-eibxCp9n2...P4GEQQOSGI",
+            "token_secret": "H0ycCFemmC4wyf1...qoIpBo"}
+twtest用于询问用户的时间线，用于test the body and the headers and printing them out in as raw a way we can do
+twurl（Augment是它的一小部分）用python内置的OAuth写成，获得四种key.
+twURL augment is something I wrote to make it easier to add all these OAuth parameters. 
 13.8-教学example code-针对于Twitter API
 import urllib.request, urllib.parse, urllib.error
 import twurl'''用于解决API授权问题
@@ -221,3 +236,89 @@ def test_me():
     print(data)
     headers = dict(connection.getheaders())
     print(headers)
+最后得到的是byte array(大概率是UTF-8)
+
+'''twitter1.py parse the URL
+import urllib.request, urllib.parse, urllib.error
+import twurl
+import ssl
+
+# https://apps.twitter.com/
+# Create App and get the four strings, put them in hidden.py
+
+TWITTER_URL = 'https://api.twitter.com/1.1/statuses/user_timeline.json'
+
+# Ignore SSL certificate errors
+ctx = ssl.create_default_context()
+ctx.check_hostname = False
+ctx.verify_mode = ssl.CERT_NONE
+
+while True:
+    print('')
+    acct = input('Enter Twitter Account:')
+    if (len(acct) < 1): break
+    url = twurl.augment(TWITTER_URL,
+                        {'screen_name': acct, 'count': '2'})
+    print('Retrieving', url)
+    connection = urllib.request.urlopen(url, context=ctx)
+    data = connection.read().decode()
+    print(data[:250])
+    headers = dict(connection.getheaders())
+    # print headers
+    print('Remaining', headers['x-rate-limit-remaining'])
+    
+twitter2.py parse the JavaScript
+import urllib.request, urllib.parse, urllib.error
+import twurl
+import json
+import ssl
+
+# https://apps.twitter.com/
+# Create App and get the four strings, put them in hidden.py
+
+TWITTER_URL = 'https://api.twitter.com/1.1/friends/list.json'
+
+# Ignore SSL certificate errors
+ctx = ssl.create_default_context()
+ctx.check_hostname = False
+ctx.verify_mode = ssl.CERT_NONE
+
+while True:
+    print('')
+    acct = input('Enter Twitter Account:')
+    if (len(acct) < 1): break
+    url = twurl.augment(TWITTER_URL,
+                        {'screen_name': acct, 'count': '5'})
+    print('Retrieving', url)
+    connection = urllib.request.urlopen(url, context=ctx)
+    data = connection.read().decode()
+
+    js = json.loads(data)
+    print(json.dumps(js, indent=2))
+
+    headers = dict(connection.getheaders())
+    print('Remaining', headers['x-rate-limit-remaining'])
+
+    for u in js['users']:
+        print(u['screen_name'])
+        if 'status' not in u:
+            print('   * No status found')
+            continue
+        s = u['status']['text']
+        print('  ', s[:50])
+        import urllib.request as ur
+import urllib.parse as up
+import json
+
+serviceurl = "http://py4e-data.dr-chuck.net/json?"
+
+address_input = input("Enter location: ")
+params = {"sensor": "false", "address": address_input}
+url = serviceurl + up.urlencode(params)
+print("Retrieving ", url)
+data = ur.urlopen(url).read().decode('utf-8')
+print('Retrieved', len(data), 'characters')
+json_obj = json.loads(data)
+
+place_id = json_obj["results"][0]["place_id"]
+print("Place id", place_id)
