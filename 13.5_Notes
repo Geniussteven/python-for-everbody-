@@ -94,3 +94,5 @@ while True:
     print('lat', lat, 'lng', lng)
     location = js['results'][0]['formatted_address']
     print(location)
+'''谷歌地图API一起工作。在过去，这个地图API是免费的，每天有2500个请求。
+但现在，他们已经使它的一部分在API密钥后面，你开始使用OAuth和其他东西，但他们没有把它全部放在我们一直在使用的这个地址服务后面.
