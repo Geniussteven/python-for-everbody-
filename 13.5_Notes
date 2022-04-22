@@ -96,5 +96,9 @@ while True:
     print('lat', lat, 'lng', lng)
     location = js['results'][0]['formatted_address']
     print(location)
-'''谷歌地图API一起工作。在过去，这个地图API是免费的，每天有2500个请求。
+''''''API是对URL模式的规范，是我们应该发送的数据的语法，是我们可以期望得到的数据的语法.
+API的生产者，即拥有数据、输出API和定义API的人。而消费者则是阅读API的文档，写一些代码，然后遵守API的规则的人。
+https://maps.googleapis.com/maps/api/geocode/json是一个URL
+加一个？后面是encode这些参数。
+谷歌地图API一起工作。在过去，这个地图API是免费的，每天有2500个请求。
 但现在，他们已经使它的一部分在API密钥后面，你开始使用OAuth和其他东西，但他们没有把它全部放在我们一直在使用的这个地址服务后面.'''
