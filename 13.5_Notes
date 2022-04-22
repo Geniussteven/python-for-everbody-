@@ -42,7 +42,7 @@ for item in info:
     print('Id', item['id'])
     print('Attribute', item['x'])
 
-13.7-教学example code
+13.7-教学example code-针对于Google map API
 import urllib.request, urllib.parse, urllib.error
 import json
 import ssl
