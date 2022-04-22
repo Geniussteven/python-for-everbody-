@@ -82,7 +82,7 @@ while True:
     except:
         js = None
 
-    if not js or 'status' not in js or js['status'] != 'OK':
+    if not js or 'status' not in js or js['status'] != 'OK':#如果成功的话，status！=OK 是响应的一部分。所以这是一个让你知道你没有得到任何好的数据的方法
         print('==== Failure To Retrieve ====')
         print(data)
         continue
