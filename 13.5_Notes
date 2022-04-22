@@ -108,7 +108,13 @@ google 限制rquest per day；Twitter API, you get zero requests unless you are 
 
 13.8-教学example code-针对于Twitter API
 import urllib.request, urllib.parse, urllib.error
-import twurl#用于解决API授权问题
+import twurl'''用于解决API授权问题
+在样本代码中有一个叫hidden.py的文件。
+你必须剪下并粘贴你在登录后从Twitter网站上得到的四个值(consumer_key, the consumer_secret, the token_key, the token_secret)。
+它会给你这些值，你必须把它们放进去，所以hidden.py是twurl的一部分
+使用了一个叫做OAuth的protocol，基本上我们要做的就是签署URL，所以它不仅仅是一个URL。
+它是一个URL加上URL上的签名 URL plus the signature on the URL。
+它的签名方式是，只要你知道密钥和秘密，就可以签署这些东西'''
 import json
 import ssl
 
