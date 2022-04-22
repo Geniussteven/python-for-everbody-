@@ -58,7 +58,8 @@ if api_key is False:
 else :
     serviceurl = 'https://maps.googleapis.com/maps/api/geocode/json?'
 
-# Ignore SSL certificate errors
+''' Ignore SSL certificate errors,请忽略证书错误。这与我们使用HTTPS的事实有关，Python默认没有放足够的证书
+我们要做的是做一个URL打开。这里的这一点是为了关闭SSL证书的安全检查'''
 ctx = ssl.create_default_context()
 ctx.check_hostname = False
 ctx.verify_mode = ssl.CERT_NONE
@@ -185,7 +186,8 @@ print(data)
 print ('======================================')
 headers = dict(connection.getheaders())
 print(headers)
-
+'''保护安全 OAuth nonce，OAuth时间戳。这些时间戳和nonce是为了让你无法重放我的URL，即使你看到确切的URL。
+一旦我hit它，那么你就不能hit它，所以，这就是nonce的作用'''
 
 Worked Example: Twitter API (Chapter 13)-twurl.py
 import urllib.request, urllib.parse, urllib.error
