@@ -66,3 +66,9 @@ for line in name :
     for emails in line[5] :
         counts[emails] = counts.get(eamils, 0) + 1
 lst = list()
+#scraping 
+'''meaning：一段python程序伪装成一个浏览器，可以retrieve webpages，
+可以提取信息，获取更多的链接。再去获得更多的网页，类似爬网。
+爬网最大问题是对回来的HTML进行解析。当你的浏览器检索HTML时，它会经过一大堆事情，有效地原谅了HTML中的语法错误。
+事实证明，网络上有很多HTML都有语法错误，但你甚至都没有注意到。'''
+'''BeautifulSoup的库-HTML超级解析器,帮助纠正HTML语法错误'''
