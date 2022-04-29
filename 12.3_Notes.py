@@ -48,7 +48,7 @@ fhand = urllib.request.urlopen('http域名')#类似于open域名文件
 for line in fhand:
 print(line.decode().strip())#line 其实是byte array,需要解码成string
 
-之前的
+用之前的代码逻辑
 for line in name :
     line.decode().split()
     for emails in line[5] :
