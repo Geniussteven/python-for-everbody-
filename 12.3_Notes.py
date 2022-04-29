@@ -72,3 +72,28 @@ lst = list()
 爬网最大问题是对回来的HTML进行解析。当你的浏览器检索HTML时，它会经过一大堆事情，有效地原谅了HTML中的语法错误。
 事实证明，网络上有很多HTML都有语法错误，但你甚至都没有注意到。'''
 '''BeautifulSoup的库-HTML超级解析器,帮助纠正HTML语法错误'''
+# To run this, download the BeautifulSoup zip file
+# http://www.py4e.com/code3/bs4.zip
+# and unzip it in the same directory as this file
+
+from urllib.request import urlopen
+from bs4 import BeautifulSoup
+import ssl
+
+# Ignore SSL certificate errors
+ctx = ssl.create_default_context()
+ctx.check_hostname = False
+ctx.verify_mode = ssl.CERT_NONE
+
+url = input('Enter - ')
+html = urlopen(url, context=ctx).read()
+soup = BeautifulSoup(html, "html.parser")
+
+# Retrieve all of the anchor tags
+tags = soup('a')
+for tag in tags:
+    # Look at the parts of a tag
+    print('TAG:', tag)
+    print('URL:', tag.get('href', None))
+    print('Contents:', tag.contents[0])
+    print('Attrs:', tag.attrs)
