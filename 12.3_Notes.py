@@ -42,13 +42,25 @@ mysock.close()
 
 Answer:
 mysock.connect()
+
 #urllib
 improt 一些库urllib
 fhand = urllib.request.urlopen('http域名')#类似于open域名文件
 for line in fhand:
 print(line.decode().strip())#line 其实是byte array,需要解码成string
 
+就像对待file一样对待
+improt 一些库urllib
+fhand = urllib.request.urlopen('http域名')
+counts = dict()
+for line in fhand:
+ words = line.decode().split()
+ for word in words:
+  counts[emails] = counts.get(eamils, 0) + 1
+print(counts)
+
 用之前的代码逻辑
+
 for line in name :
     line.decode().split()
     for emails in line[5] :
