@@ -89,7 +89,9 @@ url = input('Enter - ')
 html = urlopen(url, context=ctx).read()
 soup = BeautifulSoup(html, "html.parser")
 
-# Retrieve all of the anchor tags
+# Retrieve all of the anchor tags 
+'''在HTML中标签<a></a> 或者大写字母A 。 其中的a（或者A） 是anchor 的缩写。
+这些标签的作用是标明超连接的起始位置或目的位置。'''
 tags = soup('a')
 for tag in tags:
     # Look at the parts of a tag
