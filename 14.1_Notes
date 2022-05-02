@@ -36,6 +36,34 @@ invoking唤起 the objects'''
 an.party()就是call it'''
 
 
+案例 party5.py
+class PartyAnimal:
+   x = 0
+   name = ''
+   def __init__(self, nam):
+     self.name = nam
+     print(self.name,'constructed')
+
+   def party(self) :
+     self.x = self.x + 1
+     print(self.name,'party count',self.x)
+
+s = PartyAnimal('Sally')
+j = PartyAnimal('Jim')
+
+s.party()
+j.party()
+s.party()'''注意这是两个x，两个名字，它们是独立存储在每个对象中的。
+所以这是两个独立的instances实例，这里的关键是实例instances。
+这是因为我们建造了两个PartyAnimals，然后把它们放在不同的变量中。
+所以同时，它们中的每一个都有它们需要的所有内部结构'''
+
+'''上面的这并不是一个非常有用的例子。
+如果有一堆字符串，一个在x，一个在line，一个在z，一个在this，一个在name，一个在email，
+它们都是字符串，里面有数据。
+因此，这些变量名称是指向拥有所有数据的对象的。
+接下来，我们将讨论另一种定义对象能力的方法，即继承inheritance。'''
+
 
 
 
