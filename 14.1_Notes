@@ -36,7 +36,7 @@ invoking唤起 the objects'''
 an.party()就是call it'''
 
 
-案例 party5.py
+案例 party5.py 再思考一下知道想明白为止。
 class PartyAnimal:
    x = 0
    name = ''
@@ -63,15 +63,3 @@ s.party()'''注意这是两个x，两个名字，它们是独立存储在每个�
 它们都是字符串，里面有数据。
 因此，这些变量名称是指向拥有所有数据的对象的。
 接下来，我们将讨论另一种定义对象能力的方法，即继承inheritance。'''
-
-
-
-
-
-
-
-
-
-
-
-
