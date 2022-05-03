@@ -62,4 +62,39 @@ s.party()'''注意这是两个x，两个名字，它们是独立存储在每个�
 如果有一堆字符串，一个在x，一个在line，一个在z，一个在this，一个在name，一个在email，
 它们都是字符串，里面有数据。
 因此，这些变量名称是指向拥有所有数据的对象的。
+
+#菜鸟编程例子 https://www.runoob.com/python3/python3-class.html
+class MyClass:
+    """一个简单的类实例"""
+    i = 12345
+    def f(self):
+        return 'hello world'
+ 
+# 实例化类
+x = MyClass()
+ 
+# 访问类的属性和方法
+print("MyClass 类的属性 i 为：", x.i)
+print("MyClass 类的方法 f 输出为：", x.f())
+#类的方法与普通的函数只有一个特别的区别——它们必须有一个额外的第一个参数名称, 按照惯例它的名称是 self。
+
+#类定义
+class people:
+    #定义基本属性
+    name = ''
+    age = 0
+    #定义私有属性,私有属性在类外部无法直接进行访问
+    __weight = 0
+    #定义构造方法
+    def __init__(self,n,a,w):
+        self.name = n
+        self.age = a
+        self.__weight = w
+    def speak(self):
+        print("%s 说: 我 %d 岁。" %(self.name,self.age))
+ 
+# 实例化类
+p = people('runoob',10,30)
+p.speak()
+
 接下来，我们将讨论另一种定义对象能力的方法，即继承inheritance。'''
