@@ -23,3 +23,10 @@ input files 然后经过程序清理，存储到database
 SQLite 就是所谓的嵌入式数据库。MySQL 或 Oracle 是一整套独立的软件 ，我们通过网络连接讨论。 但 SQLite 实际上是软件的一部分，所以它是python内置的.
 它的速度很快，并针对更少量的数据
 导入语句：import statement'''
+
+#建立table
+CREATE TABLE users(
+	name VARCHAR(128),
+	email VARCHAR(128)
+)
+以上代码实际上就是一个有关最大字符数和名称的协议。
