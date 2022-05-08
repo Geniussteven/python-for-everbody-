@@ -39,7 +39,11 @@ UPDATE users SET name='Charles' WHERE email= 'kr@umich.edu'
 #Retrieving
 SELECT*FROM users'''SELECT接受一个列表，这是一个列表。
 *意味着所有的列,名为 Users 的数据库中的所有行、列'''
-SELECT*FROM users WHERE 某一行（或者每一个有这个语句的行）
+'''SELECT*FROM users WHERE 某一行（或者每一个有这个语句的行）
+SELECT COUNT(*) FROM Users
+the user wants to know the total number of rows in the orders table. 
+So the user calls the COUNT(*) function in a SELECT statement without a WHERE clause: 
+SELECT COUNT(*) AS total_rows FROM orders'''
 #sorting with order by
 SELECT*FROM users ORDER BY email
 '''排序是数据库做得非常好的事情之一。'''
@@ -85,3 +89,11 @@ for row in cur.execute(sqlstr):
     print(str(row[0]), row[1])
 
 cur.close()
+
+
+
+The program can be speeded up greatly by moving the commit operation outside of the loop. 
+In any database program, 
+there is a balance between the number of operations you execute between commits and the importance of not losing the results of operations that have not yet been committed.
+通过将提交操作移到循环之外，可以大大加快程序的速度。
+在任何数据库程序中，你在提交之间执行的操作数量与不丢失尚未提交的操作结果的重要性之间存在着一种平衡。
