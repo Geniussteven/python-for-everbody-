@@ -43,3 +43,45 @@ SELECT*FROM users WHERE 某一行（或者每一个有这个语句的行）
 #sorting with order by
 SELECT*FROM users ORDER BY email
 '''排序是数据库做得非常好的事情之一。'''
+
+
+#emaildb.py example
+import sqlite3
+
+conn = sqlite3.connect('emaildb.sqlite')
+cur = conn.cursor()'''这个cursor很像我们的handle 
+它不像你只是open()read()那么简单 
+但你打开它然后发送SQL命令。这个cursor，然后你拿到你的回答通过那同样的cursor 
+因此这里的cur是我们感兴趣的这个变量 
+首先我们要做的是，拿这个文件，这两行代码将帮助我们创建该文件，
+目前该文件不存在，它将被创建在与emaildb.py相同的目录中'''
+
+cur.execute('DROP TABLE IF EXISTS Counts')'''删除数据库中的表,如果表存在，则阻止一个全新的数据库'''
+
+cur.execute('''
+CREATE TABLE Counts (email TEXT, count INTEGER)''')
+
+fname = input('Enter file name: ')
+if (len(fname) < 1): fname = 'mbox-short.txt'
+fh = open(fname)
+for line in fh:
+    if not line.startswith('From: '): continue
+    pieces = line.split()
+    email = pieces[1]
+    cur.execute('SELECT count FROM Counts WHERE email = ? ', (email,))'''? is a placeholder.
+    row = cur.fetchone()
+    if row is None:
+        cur.execute('''INSERT INTO Counts (email, count)
+                VALUES (?, 1)''', (email,))
+    else:
+        cur.execute('UPDATE Counts SET count = count + 1 WHERE email = ?',
+                    (email,))
+    conn.commit()
+
+# https://www.sqlite.org/lang_select.html
+sqlstr = 'SELECT email, count FROM Counts ORDER BY count DESC LIMIT 10'
+
+for row in cur.execute(sqlstr):
+    print(str(row[0]), row[1])
+
+cur.close()
