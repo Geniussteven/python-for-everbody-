@@ -30,3 +30,16 @@ CREATE TABLE users(
 	email VARCHAR(128)
 )
 以上代码实际上就是一个有关最大字符数和名称的协议。
+#insert 
+INSERT INTO users (name, email) VALUES ('Kristin', 'kr@umich.edu') 
+#DELETE
+DELETE FROM users WHERE email='kr@umich.edu'
+#update 更新允许我们进入表格中的特定单元格或单元格集，许多行或多列或多行/列组合。
+UPDATE users SET name='Charles' WHERE email= 'kr@umich.edu'
+#Retrieving
+SELECT*FROM users'''SELECT接受一个列表，这是一个列表。
+*意味着所有的列,名为 Users 的数据库中的所有行、列'''
+SELECT*FROM users WHERE 某一行（或者每一个有这个语句的行）
+#sorting with order by
+SELECT*FROM users ORDER BY email
+'''排序是数据库做得非常好的事情之一。'''
