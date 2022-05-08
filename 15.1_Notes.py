@@ -73,6 +73,7 @@ for line in fh:
     pieces = line.split()
     email = pieces[1]
     cur.execute('SELECT count FROM Counts WHERE email = ? ', (email,))'''? is a placeholder.
+    今天要弄懂这个之后的内容'''
     row = cur.fetchone()
     if row is None:
         cur.execute('''INSERT INTO Counts (email, count)
