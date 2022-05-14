@@ -6,5 +6,10 @@
 第二步-映射到一个数据库map this into a database'''
 
 15.5 - Representing a Data Model in Tables
-建立物理模型，primary key 主键是一种方法 为我们指一个特定的行，因此它是个唯一的数字像1 2 3 4。
+'''建立物理模型，primary key 主键是一种方法 为我们指一个特定的行，因此它是个唯一的数字像1 2 3 4。
 例如专辑从属于track，不同的专辑会有不同的数字代表。
+And then we use that number in a column of a different table to sort of point to it.'''
+箭头起点是新增加的列（例如album_id,它是Foreign key），终点是primary key。
+logical key 从外界查找该行唯一的东西。
+可以在where子句里用它。
+简单可读性强的命名约定非常重要。
