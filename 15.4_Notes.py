@@ -21,3 +21,6 @@ Ai 是指自动增加，命名为文本域text field
 #15.6  Inserting Relational Data
 插入
 加；可以连续完成
+
+#Inserting Relational Data
+使用ON子句 以使我不混淆我的WHERE子句
