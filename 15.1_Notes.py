@@ -98,3 +98,5 @@ In any database program,
 there is a balance between the number of operations you execute between commits and the importance of not losing the results of operations that have not yet been committed.
 通过将提交操作移到循环之外，可以大大加快程序的速度。
 在任何数据库程序中，你在提交之间执行的操作数量与不丢失尚未提交的操作结果的重要性之间存在着一种平衡。
+
+Ai 是指自动增加，命名为文本域text field
