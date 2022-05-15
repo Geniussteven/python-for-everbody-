@@ -13,3 +13,6 @@ And then we use that number in a column of a different table to sort of point to
 logical key 从外界查找该行唯一的东西。
 可以在where子句里用它。
 简单可读性强的命名约定非常重要。
+'''现在的想法是我们趋向从外向里工作 
+新建表里先是主键
+然后是逻辑键'''
