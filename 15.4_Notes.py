@@ -13,14 +13,17 @@ And then we use that number in a column of a different table to sort of point to
 logical key 从外界查找该行唯一的东西。
 可以在where子句里用它。
 简单可读性强的命名约定非常重要。
+命名新的域及类型（TEXT or integer），然后定义非空，是主键。一旦连接到这张表就会大量使用它
 '''现在的想法是我们趋向从外向里工作 
 新建表里先是主键，后加上备注长语句 整数 不为空 主键 自动增量
 然后是逻辑键
-Ai 是指自动增加，命名为文本域text field
+AI（自动递增）是自动指定，命名为文本域text field
 '''
 #15.6  Inserting Relational Data
 插入
-加；可以连续完成
+加；可以连续运行多次，执行相同命令。
 
 #Inserting Relational Data
 使用ON子句 以使我不混淆我的WHERE子句
+目的是减少扫描才能获取信息的数据量
+本节：如何插入数据，将事物连接到一起，建立关系和连接点的模型，而不是复制数字。
