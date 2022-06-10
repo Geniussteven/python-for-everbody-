@@ -30,5 +30,5 @@ AI（自动递增）是自动指定，命名为文本域text field
 
 15.7 reconstructing Data with JOIN
 JOIN - 从多个表里选取数据
-重要部分是ON语句，用来连接一行和一个表与不同表中相应的行。
+重要部分是ON语句，用来连接一行和一个表与不同表中相应的行。用于筛选匹配的。
 eg. select 两个不同表中的列 from 表一 JOIN 表二 on 箭头起点外键= 箭头终点外键
