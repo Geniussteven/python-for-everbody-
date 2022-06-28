@@ -81,14 +81,17 @@ for line in fh:
     在某种程序上，它是在看着这个SQL并确保它或许验证那个表名是正确的或如果这里有任何语法错误，
     因此，这实际上没有真正读取这个数据
     '''
-    row = cur.fetchone()'''抓取这个第一个然后把它放回在行里，然后行将成为 这个我们从数据库里拿到的信息'''
-    if row is None:
+    row = cur.fetchone()'''抓取这个第一个然后把它放回在行里，然后行将成为这个我们从数据库里拿到的信息'''
+    if row is None:#类似get语句
         cur.execute('''INSERT INTO Counts (email, count)
                 VALUES (?, 1)''', (email,))
     else:
         cur.execute('UPDATE Counts SET count = count + 1 WHERE email = ?',
-                    (email,))
-    conn.commit()
+                    (email,))#使用update语句好过读取值然后增加value
+    conn.commit()'''它的基本工作方式是 
+    这个数据库是有效的保持了一些在内存中的信息，在某点上 必须写所有的资料出来到磁盘上 
+    因此你可以选择提交地方的次数，现在 我们要通过这个循环每次提交，但你或许通过循环每10次提交，
+    因为这个提交会花 一些时间，因为它命令所有都要写进磁盘'''
 
 # https://www.sqlite.org/lang_select.html
 sqlstr = 'SELECT email, count FROM Counts ORDER BY count DESC LIMIT 10'
