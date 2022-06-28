@@ -64,6 +64,9 @@ cur.execute('DROP TABLE IF EXISTS Counts')'''删除数据库中的表,如果表�
 
 cur.execute('''
 CREATE TABLE Counts (email TEXT, count INTEGER)''')
+'''我们在这里做的就是 我们可以把它(上一行括号内)看成是一个字典。 
+如果你还记得我们介绍字典的时候， 字典就像是一个内存中的数据库。 
+好吧，现在看起来我们是要用这个“数据库”来 创建另一个数据库'''
 
 fname = input('Enter file name: ')
 if (len(fname) < 1): fname = 'mbox-short.txt'
