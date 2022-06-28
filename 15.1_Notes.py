@@ -47,7 +47,7 @@ SELECT COUNT(*) AS total_rows FROM orders'''
 #sorting with order by
 SELECT*FROM users ORDER BY email
 '''排序是数据库做得非常好的事情之一。'''
-
+DROP TABLE IF EXISTS Counts '''删除数据库中的表,如果表存在，则阻止一个全新的数据库'''
 
 #emaildb.py example
 import sqlite3
