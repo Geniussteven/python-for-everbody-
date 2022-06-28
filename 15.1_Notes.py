@@ -94,7 +94,7 @@ for line in fh:
     因为这个提交会花 一些时间，因为它命令所有都要写进磁盘'''
 
 # https://www.sqlite.org/lang_select.html
-sqlstr = 'SELECT email, count FROM Counts ORDER BY count DESC LIMIT 10'
+sqlstr = 'SELECT email, count FROM Counts ORDER BY count DESC LIMIT 10'#DESC递减排序
 
 for row in cur.execute(sqlstr):
     print(str(row[0]), row[1])
