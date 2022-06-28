@@ -76,8 +76,12 @@ for line in fh:
     pieces = line.split()
     email = pieces[1]
     cur.execute('SELECT count FROM Counts WHERE email = ? ', (email,))'''? is a placeholder.
-    今天要弄懂这个之后的内容'''
-    row = cur.fetchone()
+    为了防止sql注入injection https://zh.wikipedia.org/zh-tw/SQL%E6%B3%A8%E5%85%A5
+    这个cur.execute实际上没有真正检索这个数据 
+    在某种程序上，它是在看着这个SQL并确保它或许验证那个表名是正确的或如果这里有任何语法错误，
+    因此，这实际上没有真正读取这个数据
+    '''
+    row = cur.fetchone()'''抓取这个第一个然后把它放回在行里，然后行将成为 这个我们从数据库里拿到的信息'''
     if row is None:
         cur.execute('''INSERT INTO Counts (email, count)
                 VALUES (?, 1)''', (email,))
