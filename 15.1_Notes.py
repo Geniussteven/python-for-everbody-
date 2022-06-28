@@ -81,7 +81,10 @@ for line in fh:
     在某种程序上，它是在看着这个SQL并确保它或许验证那个表名是正确的或如果这里有任何语法错误，
     因此，这实际上没有真正读取这个数据
     '''
-    row = cur.fetchone()'''抓取这个第一个然后把它放回在行里，然后行将成为这个我们从数据库里拿到的信息'''
+    row = cur.fetchone()'''抓取这个第一个然后把它放回在行里，然后行将成为这个我们从数据库里拿到的信息
+    cur.fetchone() method returns a sigle tuple(record) or None if nomore rows are available
+    cur.fetchall() fetches all the rows of a query result.
+    It returns all the rows as a list of tuples. An empty list is returned if there is no record to fetch.'''
     if row is None:#类似get语句
         cur.execute('''INSERT INTO Counts (email, count)
                 VALUES (?, 1)''', (email,))
