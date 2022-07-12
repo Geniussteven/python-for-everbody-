@@ -43,6 +43,7 @@ if ( len(fname) < 1 ) : fname = 'Library.xml'
 # <key>Track ID</key><integer>369</integer>
 # <key>Name</key><string>Another One Bites The Dust</string>
 # <key>Artist</key><string>Queen</string>
+# lookup()函数为DataFrame返回基于标签的 "花式索引 "功能。给定行和列标签的等长数组，返回每个（行，列）对对应的值数组。
 def lookup(d, key):
     found = False
     for child in d:
@@ -54,7 +55,7 @@ def lookup(d, key):
 stuff = ET.parse(fname)  # element tree
 all = stuff.findall('dict/dict/dict')  # 3-deep dictionaries
 print ('Dict count:'), len(all)
-for entry in all:
+for entry in all:# entry是重复浏览这每一个dict/dict/dict
     if ( lookup(entry, 'Track ID') is None ) : continue
 
     track = lookup(entry, 'TRACK ID')
