@@ -70,7 +70,7 @@ for entry in all:# entry是重复浏览这每一个dict/dict/dict
 
     print (track, name, artist, genre, album)
 
-    cur.execute('''INSERT OR IGNORE INTO Artist (name)
+    cur.execute('''INSERT OR IGNORE INTO Artist (name)'''ignore防止因为输入相同的东西而blow up'''
         VALUES ( ? )''', ( artist, ) )
     cur.execute('SELECT id FROM Artist WHERE name = ? ', (artist, ))
     artist_id = cur.fetchone()[0]
@@ -88,7 +88,7 @@ for entry in all:# entry是重复浏览这每一个dict/dict/dict
     album_id = cur.fetchone()[0]
 
 
-    cur.execute('''INSERT OR REPLACE INTO Track
+    cur.execute('''INSERT OR REPLACE INTO Track'''输入相同的东西就转变为replace（SQLite特有的update）'''
         (id, title, album_id, genre_id)
         VALUES ( ?, ?, ?, ? )''',
         (track, name, album_id, genre_id) )
