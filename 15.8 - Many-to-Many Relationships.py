@@ -14,7 +14,7 @@ cur.executescript('''
 DROP TABLE IF EXISTS User;
 DROP TABLE IF EXISTS Member;
 DROP TABLE IF EXISTS Course;
-
+#executescript 允许语句后加分号，一次执行多个语句。
 CREATE TABLE User (
     id     INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
     name   TEXT UNIQUE
