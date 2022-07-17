@@ -42,7 +42,7 @@ if len(fname) < 1:
 #   [ "Mea", "si110", 0 ],
 
 str_data = open(fname).read()
-json_data = json.loads(str_data)
+json_data = json.loads(str_data)#used to parse a valid JSON string and convert it into a Python Dictionary.
 
 for entry in json_data:
 
