@@ -29,7 +29,7 @@ CREATE TABLE Member (
     user_id     INTEGER,
     course_id   INTEGER,
     role        INTEGER,
-    PRIMARY KEY (user_id, course_id)
+    PRIMARY KEY (user_id, course_id)#这个主键的替代品，我们说我们的主键实际上是两列在一起。这是组合。所以这迫使它是独一无二的。
 )
 ''')
 
@@ -65,4 +65,7 @@ for entry in json_data:
         (user_id, course_id) VALUES ( ?, ? )''',
         ( user_id, course_id ) )
 
-    conn.commit()
+    conn.commit()'''一种写入function
+    when you enter the commit, 
+    it's going to go and write everything to disk, 
+    pause until it's complete, and then your program doesn't continue.'''
