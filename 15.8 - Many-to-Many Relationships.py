@@ -69,3 +69,4 @@ for entry in json_data:
     when you enter the commit, 
     it's going to go and write everything to disk, 
     pause until it's complete, and then your program doesn't continue.'''
+    ORDER BY 语句后面可以加 LIMIT 10 表示 只提取这个table的前十行
