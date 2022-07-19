@@ -41,7 +41,7 @@ while True:
             if cur.rowcount != 1:
                 print('Error inserting account:', acct)
                 continue
-            id = cur.lastrowid'''grab最后一行的id
+            id = cur.lastrowid'''grab最后一行的id ,it is the primary key that was assigned by SQL
             在此之前都不知道id是什么'''
 
     url = twurl.augment(TWITTER_URL, {'screen_name': acct, 'count': '100'})
@@ -69,7 +69,7 @@ while True:
 
     if 'users' not in js:#js是parsed dictionary, 如果user key 不在里面。
         print('Incorrect JSON received')
-        print(json.dumps(js, indent=4))
+        print(json.dumps(js, indent=4))#dump()将 Python 对象编码成 JSON 字符串
         continue
 
     cur.execute('UPDATE People SET retrieved=1 WHERE name = ?', (acct, ))
