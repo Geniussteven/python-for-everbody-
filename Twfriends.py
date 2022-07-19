@@ -26,7 +26,7 @@ while True:
         cur.execute('SELECT id, name FROM People WHERE retrieved=0 LIMIT 1')
         try:
             (id, acct) = cur.fetchone()
-        except:
+        except: 
             print('No unretrieved Twitter accounts found')
             continue
     else:
@@ -41,21 +41,22 @@ while True:
             if cur.rowcount != 1:
                 print('Error inserting account:', acct)
                 continue
-            id = cur.lastrowid
+            id = cur.lastrowid'''grab最后一行的id
+            在此之前都不知道id是什么'''
 
     url = twurl.augment(TWITTER_URL, {'screen_name': acct, 'count': '100'})
     print('Retrieving account', acct)
     try:
         connection = urllib.request.urlopen(url, context=ctx)
-    except Exception as err:
+    except Exception as err:#Exception-Base class for all exceptions
         print('Failed to Retrieve', err)
         break
 
-    data = connection.read().decode()
-    headers = dict(connection.getheaders())
+    data = connection.read().decode()#解码过程，utf-8->unicode
+    headers = dict(connection.getheaders())#向url找header（以字典的形式），调用这个函数。
 
-    print('Remaining', headers['x-rate-limit-remaining'])
-
+    print('Remaining', headers['x-rate-limit-remaining'])#how many we have left for the remaining
+    # fail when json is syntactically bad
     try:
         js = json.loads(data)
     except:
@@ -66,7 +67,7 @@ while True:
     # Debugging
     # print(json.dumps(js, indent=4))
 
-    if 'users' not in js:
+    if 'users' not in js:#js是parsed dictionary, 如果user key 不在里面。
         print('Incorrect JSON received')
         print(json.dumps(js, indent=4))
         continue
@@ -90,7 +91,7 @@ while True:
             if cur.rowcount != 1:
                 print('Error inserting account:', friend)
                 continue
-            friend_id = cur.lastrowid
+            friend_id = cur.lastrowid#grab this as the primary key of the row that we just inserted.
             countnew = countnew + 1
         cur.execute('''INSERT OR IGNORE INTO Follows (from_id, to_id)
                     VALUES (?, ?)''', (id, friend_id))
